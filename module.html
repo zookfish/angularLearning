@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Angular模块</title>
+</head>
+
+<body>
+    <script src="node_modules/angular/angular.js"></script>
+    <script>
+    /**
+     * [app description]
+     * @type {[type]}
+     * 通过angular.module('myapp',[])创建一个模块 空数组代表以来的其它模块
+     * angular.module('myapp') 代表获取一个模块 
+     */
+    var app = angular.module('myapp', []);
+
+    app.controller('DemoController', function($scope) {
+        $scope.user = {}
+        $scope.user.name = 'zookfish'
+        $scope.show = function() {
+            $scope.user.name = 'yunux'
+        }
+    })
+    </script>
+    <div ng-app='myapp' ng-controller="DemoController">
+        <h1>Angular的模块</h1>
+        <input type="text" placeholder="输入姓名" ng-model="user.name">
+        <p>Hello,<strong>{{user.name}}</strong></p>
+        <p>
+            <input type="button" ng-click="show()" value="change">
+        </p>
+    </div>
+</body>
+
+</html>

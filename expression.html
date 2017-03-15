@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Angular表达式</title>
+    <style>
+    /* 
+		ng-cloak 是为了避免angular没有被渲染的时候隐藏的
+     */
+    
+    [ng-cloak] {
+        display: none;
+    }
+    </style>
+</head>
+
+<body ng-app ng-cloak>
+    {{'Hello'+'Angular'}}
+    <script src="node_modules/angular/angular.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ng-repeat指令</title>
+    <style>
+    .red {
+        color: red
+    }
+    
+    .green {
+        color: green
+    }
+    </style>
+</head>
+
+<body ng-app='app'>
+    <!-- 第一种用法 -->
+    <!-- <ul ng-controller='listController'>
+        <li ng-repeat="item in data" data-id="item.id" class="{{$even?'red':'green'}}">
+            <span>{{$first?'开始':''}}</span>
+            <span>{{item.name}}</span>
+            <span>{{item.age}}</span>
+            <span>{{$last?'结束':''}}</span>
+        </li>
+    </ul> -->
+    <!-- ng-class 接收一个对象 根据后面的值来确定是否添加该属性 -->
+    <!-- ng-repeat 接受到重复的元素是需要 ng-repeat= 'item in data track by $index' 即指定一个不重复的值-->
+    <ul ng-controller='listController'>
+        <li ng-repeat="item in data" data-id="item.id" ng-class="{red:$even,green:$odd}">
+            <span>{{$first?'开始':''}}</span>
+            <span>{{item.name}}</span>
+            <span>{{item.age}}</span>
+            <span>{{$last?'结束':''}}</span>
+        </li>
+    </ul>
+    <script src="node_modules/angular/angular.js"></script>
+    <script>
+    angular.module('app', []).controller('listController', ['$scope', function($scope) {
+        $scope.data = [];
+
+        for (var i = 0; i < 10; i++) {
+            $scope.data[$scope.data.length] = {
+                id: i,
+                name: 'zookfish' + i,
+                age: 15 + i
+            }
+        }
+    }])
+    </script>
+</body>
+
+</html>

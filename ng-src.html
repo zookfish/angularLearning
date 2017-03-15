@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ng-src </title>
+    <script src="node_modules/angular/angular.js"></script>
+</head>
+
+<body ng-app ng-init="imgUrl='a.png'" ng-cloak>
+    <img src="{{imgUrl}}" alt="">
+    <a href="{{imgUrl}}">点这个跳转</a>
+    <!-- <img ng-src="{{imgUrl}}" alt="">
+    <a ng-href="{{imgUrl}}">点这个跳转</a> -->
+</body>
+
+</html>

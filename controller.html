@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>控制器</title>
+</head>
+
+<body ng-app='ctrlapp' ng-controller='ctrlController'>
+    <form action="controller_submit" method="post" accept-charset="utf-8">
+        <p>
+            <input type="text" name="username" ng-model="user.username"><span>{{message}}</span>
+        </p>
+        <p>
+            <input type="password" name="password" ng-model="user.password">
+        </p>
+        <p>
+            <input type="button" ng-click="login()" value="提交">
+        </p>
+    </form>
+    <script src="node_modules/angular/angular.js"></script>
+    <script>
+    var ctrl = angular.module('ctrlapp', [])
+        //这种方式压缩代码会有问题，会替换$scope
+        // ctrl.controller('ctrlController',function ($scope) {
+
+    // })
+    // $scope暴露数据和行为 是连接controller和view的桥梁
+    // {{}}  表达式是单向的
+    ctrl.controller('ctrlController', ['$scope', function($$) {
+        $$.user = {
+            username: '',
+            password: ''
+        };
+        $$.login = function() {
+            console.log($$.user.username)
+            console.log($$.user.password)
+        };
+        $$.message = '12414134';
+
+        //监视模型的操作
+        $$.$watch('user.username', function(now, old) {
+            // console.log('now is' + now); console.log('old is' + old);
+
+            if (now) {
+                if (now.length < 7) {
+                    $$.message = '不合法的用户名';
+                } else {
+                    $$.message = ''
+                }
+            } else {
+                $$.message = '请输入合法的用户名';
+            }
+
+        })
+    }])
+    </script>
+</body>
+
+</html>

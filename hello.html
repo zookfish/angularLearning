@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Angular简单例子</title>
+</head>
+<!-- ng-app angular的容器 -->
+
+<body ng-app>
+    <div ng-app ng-init="user.name='zookfish'">
+        <h1>使用Angular实现双向数据绑定</h1>
+        <p>
+            <input type="text" placeholder="请输入姓名" ng-model="user.name">
+        </p>
+        <p>
+            hell0,<strong>{{user.name}}</strong>
+        </p>
+        <p>
+            hell0,<strong>{{user.name}}</strong>
+        </p>
+        <p>
+            <input type="text" value={{user.name}}>
+        </p>
+    </div>
+    <script src="node_modules/angular/angular.js"></script>
+</body>
+
+</html>

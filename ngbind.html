@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ng-bind && ng-bind-html</title>
+</head>
+
+<body>
+    <!-- ng 默认会转译包含的html -->
+    <div ng-app ng-init="username='<h1>hello</h1>'">
+        <strong ng-bind="username"></strong>
+    </div>
+    <div ng-app='myapp' ng-init="username='<h1>hello</h1>'">
+        <strong ng-bind-html='username'></strong>
+    </div>
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular-sanitize/angular-sanitize.js"></script>
+    <script>
+    angular.module('myapp', ['ng-Sanitize'])
+    </script>
+</body>
+
+</html>

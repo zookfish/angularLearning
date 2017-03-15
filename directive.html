@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Angular指令</title>
+</head>
+
+<body>
+    <!-- angular 在寻找ng-app的指令默认只会查找到一个ng-app ，需要嵌套一个新的包裹住里面的模块 -->
+    <div ng-app="myapp">
+        <div ng-controller="do1controller">
+            <input type="button" value="按钮一" ng-click="do1()">
+        </div>
+        <div ng-controller="do2controller">
+            <input type="button" value="按钮二" ng-click="do2()">
+        </div>
+    </div>
+    <script src="node_modules/angular/angular.js"></script>
+    <script>
+    angular.module('myapp1', []).controller('do1controller', ['$scope', function($scope) {
+        $scope.do1 = function() {
+            console.log('按钮一被点击了');
+        }
+    }]);
+    angular.module('myapp2', []).controller('do2controller', ['$scope', function($scope) {
+        $scope.do2 = function() {
+            console.log('按钮二被点击了');
+        }
+    }])
+    angular.module('myapp', ['myapp1', 'myapp2'])
+    </script>
+</body>
+
+</html>
