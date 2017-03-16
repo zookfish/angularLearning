@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>自定义指令</title>
+    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <script src="node_modules/angular/angular.js"></script>
+</head>
+
+<body ng-app="app">
+    <!-- 使用自定义指令 -->
+    <app-Btn></app-Btn>
+    <script>
+    var app = angular.module('app', []);
+    /**
+     * [description]
+     * @param  {String} ) {                   return {            template: '<input type [description]
+     * @return {[type]}   [description]
+     *
+     * 自定义指令 要用驼峰命名法 使用的时候要写成 app-btn
+     */
+    app.directive('appBtn', [function() {
+        return {
+            template: '<input type="button" value="提交" class="btn btn-lg btn-success" />'
+        }
+    }])
+    </script>
+</body>
+
+</html>

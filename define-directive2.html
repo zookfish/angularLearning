@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>自定义指令()</title>
+    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <script src="node_modules/angular/angular.js"></script>
+</head>
+
+<body ng-app="app">
+    <btn>点我点我点我</btn>
+    <bread></bread>
+    <div bread>
+    </div>
+    <script>
+    var app = angular.module('app', []);
+    app.directive('btn', [function() {
+        return {
+            // 指定btn的innerHTML为生成的模板的值 只有该值设为true才能使用ng-transclude
+            transclude: true,
+            // 指定btn解析成模板的样式
+            replace: true,
+            template: '<button class="btn btn-lg btn-primary" ng-transclude></button>'
+        }
+    }]);
+    app.directive('bread', [function() {
+        return {
+            // 指定该指令是什么类型 A 属性 E 元素 EA 都可以
+            restrict: 'EA',
+            replace: true,
+            // 这个属性与rempalte 是互斥的
+            templateUrl: 'tempUrl/bread.html'
+        }
+    }])
+    </script>
+</body>
+
+</html>

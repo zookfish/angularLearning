@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ng-switch指令</title>
+    <script src="node_modules/angular/angular.js"></script>
+</head>
+
+<body ng-app>
+    <!-- 类似ng-model的指令
+	ng-checked
+	ng-diabled
+	ng-readonly
+	ng-selected
+ -->
+    <select ng-model="selected">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+    </select>
+    <div ng-switch="selected">
+        <div ng-switch-when="1">
+            你的选择是1
+        </div>
+        <div ng-switch-when="2">
+            你的选择是2
+        </div>
+        <div ng-switch-when="3">
+            你的选择是3
+        </div>
+        <div ng-switch-default>
+            你啥都没有选
+        </div>
+    </div>
+    <!-- ng-checked 和ng-selected只会做单向绑定数据到视图,不会做视图到数据的绑定 -->
+    <p>
+        <input type="checkbox" ng-model='checked'>全选/取消</p>
+    <ul>
+        <li>选择01
+            <input type="checkbox" ng-checked="checked">
+        </li>
+        <li>选择02
+            <input type="checkbox" ng-checked="checked">
+        </li>
+        <li>选择03
+            <input type="checkbox" ng-checked="checked">
+        </li>
+        <li>选择04
+            <input type="checkbox" ng-checked="checked">
+        </li>
+    </ul>
+</body>
+
+</html>
