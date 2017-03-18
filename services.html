@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Service服务</title>
+    <script src="node_modules/angular/angular.js"></script>
+</head>
+
+<body ng-app="app">
+    <div ng-controller="ctrlA">
+        Actrl:
+        <input type="text" ng-model="user.name">
+    </div>
+    <div ng-controller="ctrlB">
+        Bctrl:
+        <input type="text" ng-model="user.name">
+    </div>
+    <script>
+    var app = angular.module('app', []);
+    // 创建service
+    // Angular services依赖注入的规范：自定义的service要写在内建的Angular services之后，自定义的service之间是没有先后顺序的。
+    app.factory('Userinformation', function() {
+        var user = {
+            name: 'Angular.js'
+        };
+        return user;
+    });
+    app.controller('ctrlA', ['$scope', 'Userinformation', function($scope, userinfo) {
+        $scope.user = userinfo;
+    }]);
+    app.controller('ctrlB', ['$scope', 'Userinformation', function($scope, userinfo) {
+        $scope.user = userinfo;
+    }])
+    </script>
+</body>
+
+</html>

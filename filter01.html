@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>过滤器</title>
+    <script src="node_modules/angular/angular.js"></script>
+</head>
+
+<body ng-app='app' ng-controller='ctrl'>
+    <!-- angular 本身内置了currency filter -->
+    <span>There are 13 phones in the basket. Total:{{1232.12 | currency}}</span>
+    <ul>
+        <!-- orderBy:'name'  升序过滤  降序 -name-->
+        <li ng-repeat="data in develepers | orderBy:'-name'">
+            {{data.name}} form {{data.city}}
+        </li>
+    </ul>
+    Search:
+    <input type="text" ng-model="search">
+    <ul ng-show="dis()">
+        <li ng-repeat="per in develepers | filter:search">
+            {{per.name}} from {{per.city}}
+        </li>
+    </ul>
+    <!-- 自定义的过滤器-->
+    <span>{{'it is so well!' | caplitalize}}</span>
+    <script>
+    angular.module('app', [])
+        .controller('ctrl', ['$scope', function($scope) {
+            $scope.develepers = [{
+                name: 'zook',
+                city: 'HB'
+            }, {
+                name: 'shixiaoquan',
+                city: 'HN'
+            }, {
+                name: 'Json',
+                city: 'SZ'
+            }];
+            $scope.search = '';
+            $scope.dis = function() {
+                if (!$scope.search) {
+                    return false;
+                };
+                return true;
+            }
+        }]).filter('caplitalize', function() {
+            return function(input, param) {
+                return input.substring(0, 1).toUpperCase() + input.substring(1);
+            }
+        })
+    </script>
+</body>
+
+</html>
